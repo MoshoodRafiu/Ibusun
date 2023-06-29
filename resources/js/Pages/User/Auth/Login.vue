@@ -1,14 +1,19 @@
 <template>
-  <LoginCard title="Login to your account" register-uri="/register" primary-color="orange"/>
+  <LoginCard
+    title="Login to your account"
+    register-uri="/register"
+    login-uri="/login"
+    primary-color="orange"
+  />
 </template>
 
 <script setup>
-import LoginCard from '@/Components/Auth/LoginCard.vue';
+import LoginCard from "@/Components/Auth/LoginCard.vue";
 </script>
 
 <script>
-import AppLayout from '@/Layouts/AuthLayout.vue';
+import AppLayout from "@/Layouts/AuthLayout.vue";
 export default {
-  layout: AppLayout
-}
+  layout: AppLayout,
+};
 </script>

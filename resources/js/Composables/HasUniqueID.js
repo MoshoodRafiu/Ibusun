@@ -1,3 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export const uniqueID = uuidv4();
+export const uniqueID = () => {
+  return uuidv4();
+};

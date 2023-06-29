@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Auth\BaseLoginController;
+use App\Http\Requests\LoginRequest;
 use Inertia\Inertia;
-use App\Http\Controllers\Controller;
 
-class LoginController extends Controller
+class LoginController extends BaseLoginController
 {
     public function showLogin()
     {
         return Inertia::render('Admin/Auth/Login');
+    }
+
+    public function login(LoginRequest $request)
+    {
+        $this->authenticate($request, 'admin');
     }
 }

@@ -13,9 +13,9 @@
 
     <div class="mt-10 w-full">
       <form class="space-y-6" action="#" method="POST">
-        <Input type="email" label="Email Address" placeholder="Email Address" />
+        <Input v-model="form.email" :error="form.errors.email" type="email" label="Email Address" placeholder="Email Address" />
 
-        <Input label="Password" placeholder="Password" />
+        <Input v-model="form.password" type="password" label="Password" placeholder="Password" />
 
         <div>
           <div class="flex items-center justify-between">
@@ -26,7 +26,7 @@
           </div>
         </div>
 
-        <Button block :background="primaryColor" label="Sign in" />
+        <Button block @click="submit" :disabled="form.processing" :loading="form.processing" :background="primaryColor" label="Sign in" />
 
         <div v-if="registerUri" class="text-center text-sm">
           Don't have an account?
@@ -38,18 +38,33 @@
 </template>
 
 <script setup>
-defineProps({
+import { useForm } from '@inertiajs/vue3';
+
+const props = defineProps({
   title: {
     type: String,
     default: "Login to your account",
   },
   registerUri: {
-    type: Boolean,
-    default: false,
+    type: String,
+    default: '',
+  },
+  loginUri: {
+    type: String,
+    required: true,
   },
   primaryColor: {
     type: String,
     default: 'yellow'
   }
 });
+
+const form = useForm({
+  email: null,
+  password: null,
+})
+
+const submit = () => {
+  form.post(props.loginUri);
+}
 </script>

@@ -31,5 +31,5 @@ defineProps({
   },
 });
 
-const componentId = uniqueID;
+const componentId = uniqueID();
 </script>
