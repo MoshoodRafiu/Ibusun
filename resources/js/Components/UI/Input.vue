@@ -38,5 +38,3 @@ defineProps({
 
 const componentId = uniqueID;
 </script>
-
-<style lang="scss" scoped></style>

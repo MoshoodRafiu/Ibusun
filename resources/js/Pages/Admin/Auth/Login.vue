@@ -6,10 +6,6 @@
 import LoginCard from '@/Components/Auth/LoginCard.vue';
 </script>
 
-<style lang="scss" scoped>
-
-</style>
-
 <script>
 import AppLayout from '@/Layouts/AuthLayout.vue';
 export default {

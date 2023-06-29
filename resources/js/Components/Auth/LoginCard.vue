@@ -28,9 +28,9 @@
 
         <Button block :background="primaryColor" label="Sign in" />
 
-        <div v-if="allowRegister" class="text-center text-sm">
+        <div v-if="registerUri" class="text-center text-sm">
           Don't have an account?
-          <UILink label="Register here" :color="primaryColor" href="/seller/register" />
+          <UILink label="Register here" :color="primaryColor" :href="registerUri" />
         </div>
       </form>
     </div>
@@ -43,7 +43,7 @@ defineProps({
     type: String,
     default: "Login to your account",
   },
-  allowRegister: {
+  registerUri: {
     type: Boolean,
     default: false,
   },
@@ -53,5 +53,3 @@ defineProps({
   }
 });
 </script>
-
-<style lang="scss" scoped></style>

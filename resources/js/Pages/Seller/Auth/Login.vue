@@ -1,14 +1,10 @@
 <template>
-  <LoginCard title="Login to your seller account" allow-register/>
+  <LoginCard title="Login to your seller account" register-uri="seller/register"/>
 </template>
 
 <script setup>
 import LoginCard from '@/Components/Auth/LoginCard.vue';
 </script>
-
-<style lang="scss" scoped>
-
-</style>
 
 <script>
 import AppLayout from '@/Layouts/AuthLayout.vue';
