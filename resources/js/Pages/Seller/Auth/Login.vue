@@ -1,5 +1,5 @@
 <template>
-  <LoginCard title="Login to your vendor account" allow-register/>
+  <LoginCard title="Login to your seller account" allow-register/>
 </template>
 
 <script setup>

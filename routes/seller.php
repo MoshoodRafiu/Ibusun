@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Vendor\LoginController;
+use App\Http\Controllers\Seller\LoginController;
 
 
 

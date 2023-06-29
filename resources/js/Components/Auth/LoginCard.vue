@@ -30,7 +30,7 @@
 
         <div v-if="allowRegister" class="text-center text-sm">
           Don't have an account?
-          <UILink label="Register here" :color="primaryColor" href="/vendor/register" />
+          <UILink label="Register here" :color="primaryColor" href="/seller/register" />
         </div>
       </form>
     </div>
