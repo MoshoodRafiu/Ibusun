@@ -20,5 +20,5 @@ Route::get('/', function () {
 });
 
 Route::controller(LoginController::class)->group(function () {
-    Route::get('/login', 'showLogin');
-  });
+    Route::get('/login', 'showLogin')->name('login');
+});
