@@ -1,7 +1,7 @@
 <template>
   <div class="mb-10">
     <h1 class="text-5xl font-bold text-gray-800">
-      Ibu<span :class="`text-${primaryColor}-500`">sun.</span>
+      Ibu<span :class="`text-${primaryColor}-600`">sun.</span>
     </h1>
   </div>
   <div class="sm:mx-auto sm:w-full sm:max-w-md bg-white p-10 rounded-lg">

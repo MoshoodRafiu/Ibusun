@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,7 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Home');
 });
+
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/login', 'showLogin');
+  });
