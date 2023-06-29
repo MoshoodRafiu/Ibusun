@@ -1,7 +1,7 @@
 <template>
   <div class="mb-10">
     <h1 class="text-5xl font-bold text-gray-800">
-      Ibu<span class="text-yellow-500">sun.</span>
+      Ibu<span :class="`text-${primaryColor}-500`">sun.</span>
     </h1>
   </div>
   <div class="sm:mx-auto sm:w-full sm:max-w-md bg-white p-10 rounded-lg">
@@ -19,18 +19,18 @@
 
         <div>
           <div class="flex items-center justify-between">
-            <Checkbox label="Remeber Me" checked />
+            <Checkbox label="Remeber Me" :color="primaryColor" checked />
             <div class="text-sm">
-              <UILink label="Forgot password?" href="/password/reset" />
+              <UILink label="Forgot password?" :color="primaryColor" href="/password/reset" />
             </div>
           </div>
         </div>
 
-        <Button block background="yellow" label="Sign in" />
+        <Button block :background="primaryColor" label="Sign in" />
 
         <div v-if="allowRegister" class="text-center text-sm">
           Don't have an account?
-          <UILink label="Register here" href="/vendor/register" />
+          <UILink label="Register here" :color="primaryColor" href="/vendor/register" />
         </div>
       </form>
     </div>
@@ -47,6 +47,10 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  primaryColor: {
+    type: String,
+    default: 'yellow'
+  }
 });
 </script>
 
