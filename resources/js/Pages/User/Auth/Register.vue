@@ -1,13 +1,9 @@
 <template>
-  <LoginCard
-    register-uri="/register"
-    login-uri="/login"
-    primary-color="orange"
-  />
+  <RegistrationCard primary-color="orange" login-uri="/login" register-uri="/register"/>
 </template>
 
 <script setup>
-import LoginCard from "@/Components/Auth/LoginCard.vue";
+import RegistrationCard from "@/Components/Auth/RegistrationCard.vue";
 </script>
 
 <script>

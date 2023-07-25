@@ -1,13 +1,13 @@
 <template>
-  <LoginCard
-    title="Login to your seller account"
-    register-uri="/seller/register"
+  <RegistrationCard
     login-uri="/seller/login"
+    seller
+    register-uri="/seller/register"
   />
 </template>
 
 <script setup>
-import LoginCard from "@/Components/Auth/LoginCard.vue";
+import RegistrationCard from "@/Components/Auth/RegistrationCard.vue";
 </script>
 
 <script>

@@ -13,6 +13,30 @@
 
     <div class="mt-10 w-full">
       <form class="space-y-5" action="#" method="POST">
+        <div class="grid md:grid-cols-2 gap-x-2">
+          <Input
+            v-model="form.first_name"
+            :error="form.errors.first_name"
+            label="First Name"
+            placeholder="First Name"
+          />
+          <Input
+            class="md:mt-0 mt-5"
+            v-model="form.last_name"
+            :error="form.errors.last_name"
+            label="Last Name"
+            placeholder="Last Name"
+          />
+        </div>
+
+        <Input
+          v-if="seller"
+          v-model="form.business_name"
+          :error="form.errors.business_name"
+          label="Business Name (Optional)"
+          placeholder="Business Name"
+        />
+
         <Input
           v-model="form.email"
           :error="form.errors.email"
@@ -23,23 +47,18 @@
 
         <Input
           v-model="form.password"
+          :error="form.errors.password"
           type="password"
           label="Password"
           placeholder="Password"
         />
 
-        <div>
-          <div class="flex items-center justify-between">
-            <Checkbox label="Remeber Me" :color="primaryColor" checked />
-            <div class="text-sm">
-              <UILink
-                label="Forgot password?"
-                :color="primaryColor"
-                href="/password/reset"
-              />
-            </div>
-          </div>
-        </div>
+        <Input
+          v-model="form.password_confirmation"
+          type="password"
+          label="Confirm Password"
+          placeholder="Confirm Password"
+        />
 
         <Button
           block
@@ -47,15 +66,15 @@
           :disabled="form.processing"
           :loading="form.processing"
           :background="primaryColor"
-          label="Sign in"
+          label="Register"
         />
 
-        <div v-if="registerUri" class="text-center text-sm">
-          Don't have an account?
+        <div class="text-center text-sm">
+          Already have an account?
           <UILink
-            label="Register here"
+            label="Login"
             :color="primaryColor"
-            :href="registerUri"
+            :href="loginUri"
           />
         </div>
       </form>
@@ -69,7 +88,7 @@ import { useForm } from "@inertiajs/vue3";
 const props = defineProps({
   title: {
     type: String,
-    default: "Login to your account",
+    default: "Create your free account",
   },
   registerUri: {
     type: String,
@@ -79,6 +98,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  seller: {
+    type: Boolean,
+    default: false,
+  },
   primaryColor: {
     type: String,
     default: "yellow",
@@ -86,11 +109,16 @@ const props = defineProps({
 });
 
 const form = useForm({
+  first_name: null,
+  last_name: null,
+  business_name: null,
   email: null,
   password: null,
+  password_confirmation: null,
+  type: (props.seller ? 'seller' : 'user')
 });
 
 const submit = () => {
-  form.post(props.loginUri);
+  form.post(props.registerUri);
 };
 </script>

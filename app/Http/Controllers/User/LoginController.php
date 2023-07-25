@@ -15,6 +15,6 @@ class LoginController extends BaseLoginController
 
     public function login(LoginRequest $request)
     {
-        $this->authenticate($request);
+        return $this->authenticate($request);
     }
 }
