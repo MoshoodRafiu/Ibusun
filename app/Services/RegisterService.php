@@ -27,9 +27,10 @@ class RegisterService
    */
   public function processRegister(array $credentials, string $guard)
   {
-    $details = Arr::only($credentials, ['first_name', 'last_name', 'email', 'password', 'business_name']);
+    $credentials['password'] = bcrypt($credentials['password']);
+    $credentials = Arr::only($credentials, ['first_name', 'last_name', 'email', 'password', 'business_name']);
     return $guard === 'seller'
-      ? $this->sellerRepository->create($details)
-      : $this->userRepository->create($details);
+      ? $this->sellerRepository->create($credentials)
+      : $this->userRepository->create($credentials);
   }
 }

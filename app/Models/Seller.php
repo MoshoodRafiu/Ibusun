@@ -10,7 +10,9 @@ class Seller extends Authenticatable
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'business_name',
         'email',
         'password',
     ];

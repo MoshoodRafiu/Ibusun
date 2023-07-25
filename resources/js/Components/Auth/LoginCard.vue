@@ -12,7 +12,7 @@
     </div>
 
     <div class="mt-10 w-full">
-      <form class="space-y-5" action="#" method="POST">
+      <form class="space-y-5" action="#" @submit.prevent="submit" method="POST">
         <Input
           v-model="form.email"
           :error="form.errors.email"

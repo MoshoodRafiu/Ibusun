@@ -12,7 +12,7 @@
     </div>
 
     <div class="mt-10 w-full">
-      <form class="space-y-5" action="#" method="POST">
+      <form class="space-y-5" action="#" @submit.prevent="submit" method="POST">
         <div class="grid md:grid-cols-2 gap-x-2">
           <Input
             v-model="form.first_name"
