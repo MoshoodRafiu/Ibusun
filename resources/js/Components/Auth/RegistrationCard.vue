@@ -71,51 +71,40 @@
 
         <div class="text-center text-sm">
           Already have an account?
-          <UILink
-            label="Login"
-            :color="primaryColor"
-            :href="loginUri"
-          />
+          <UILink label="Login" :color="primaryColor" :href="loginUri" />
         </div>
       </form>
     </div>
   </div>
 </template>
 
-<script setup>
-import { useForm } from "@inertiajs/vue3";
+<script setup lang="ts">
+import { AccountTypes } from "@/enums/accounts.d";
+import { RegistrationForm } from "@/types/forms/auth";
+import { InertiaForm, useForm } from "@inertiajs/vue3";
 
-const props = defineProps({
-  title: {
-    type: String,
-    default: "Create your free account",
-  },
-  registerUri: {
-    type: String,
-    default: "",
-  },
-  loginUri: {
-    type: String,
-    required: true,
-  },
-  seller: {
-    type: Boolean,
-    default: false,
-  },
-  primaryColor: {
-    type: String,
-    default: "yellow",
-  },
-});
+const props = withDefaults(
+  defineProps<{
+    title?: string;
+    seller?: boolean;
+    loginUri: string;
+    registerUri: string;
+    primaryColor?: string;
+  }>(),
+  {
+    primaryColor: "yellow",
+    title: "Create your free account",
+  }
+);
 
-const form = useForm({
-  first_name: null,
-  last_name: null,
-  business_name: null,
-  email: null,
-  password: null,
-  password_confirmation: null,
-  type: (props.seller ? 'seller' : 'user')
+const form: InertiaForm<RegistrationForm> = useForm({
+  email: "",
+  password: "",
+  last_name: "",
+  first_name: "",
+  business_name: "",
+  password_confirmation: "",
+  type: props.seller ? AccountTypes.SELLER : AccountTypes.USER,
 });
 
 const submit = () => {

@@ -10,7 +10,9 @@
     <div class="mt-2">
       <input
         :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
+        @input="
+          $emit('update:modelValue', ($event.target as HTMLInputElement).value)
+        "
         :id="componentId"
         :type="type"
         :placeholder="placeholder"
@@ -21,30 +23,25 @@
   </div>
 </template>
 
-<script setup>
-import { uniqueID } from "@/Composables/HasUniqueID.js";
+<script setup lang="ts">
+import { uniqueID } from "@/Composables/HasUniqueID";
 
-defineProps({
-  type: {
-    type: String,
-    default: "text",
-  },
-  label: {
-    type: String,
-    default: "",
-  },
-  placeholder: {
-    type: String,
-    default: "",
-  },
-  modelValue: {
-    required: false,
-  },
-  error: {
-    required: false,
-  },
-});
-defineEmits(["update:modelValue"]);
+withDefaults(
+  defineProps<{
+    type?: string;
+    label?: string;
+    placeholder?: string;
+    modelValue?: string;
+    error?: string;
+  }>(),
+  {
+    type: "text",
+  }
+);
 
-const componentId = uniqueID();
+defineEmits<{
+  (e: "update:modelValue", value: string): void;
+}>();
+
+const componentId: string = uniqueID();
 </script>

@@ -6,11 +6,11 @@
   />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import LoginCard from "@/Components/Auth/LoginCard.vue";
 </script>
 
-<script>
+<script lang="ts">
 import AppLayout from "@/Layouts/AuthLayout.vue";
 export default {
   layout: AppLayout,

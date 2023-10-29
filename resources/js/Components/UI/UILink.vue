@@ -9,29 +9,23 @@
   </component>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Link } from "@inertiajs/vue3";
 
-defineProps({
-  traditional: {
-    type: Boolean,
-    default: false,
-  },
-  color: {
-    type: String,
-    default: "yellow",
-  },
-  href: {
-    type: String,
-    default: "#",
-  },
-  label: {
-    type: String,
-    default: "",
-  },
-  method: {
-    type: String,
-    default: "get",
-  },
-});
+withDefaults(
+  defineProps<{
+    traditional?: boolean;
+    color?: string;
+    href?: string;
+    label?: string;
+    method?: string;
+  }>(),
+  {
+    traditional: false,
+    color: "yellow",
+    href: "#",
+    label: "",
+    method: "GET",
+  }
+);
 </script>

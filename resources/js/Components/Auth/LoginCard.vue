@@ -63,31 +63,26 @@
   </div>
 </template>
 
-<script setup>
-import { useForm } from "@inertiajs/vue3";
+<script setup lang="ts">
+import { LoginForm } from "@/types/forms/auth.d";
+import { InertiaForm, useForm } from "@inertiajs/vue3";
 
-const props = defineProps({
-  title: {
-    type: String,
-    default: "Login to your account",
-  },
-  registerUri: {
-    type: String,
-    default: "",
-  },
-  loginUri: {
-    type: String,
-    required: true,
-  },
-  primaryColor: {
-    type: String,
-    default: "yellow",
-  },
-});
+const props = withDefaults(
+  defineProps<{
+    title?: string;
+    loginUri: string;
+    registerUri?: string;
+    primaryColor?: string;
+  }>(),
+  {
+    primaryColor: "yellow",
+    title: "Login to your account",
+  }
+);
 
-const form = useForm({
-  email: null,
-  password: null,
+const form: InertiaForm<LoginForm> = useForm({
+  email: "",
+  password: "",
 });
 
 const submit = () => {

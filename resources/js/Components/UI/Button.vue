@@ -29,35 +29,26 @@
   </button>
 </template>
 
-<script setup>
-defineProps({
-  type: {
-    type: String,
-    default: "button",
-  },
-  background: {
-    type: String,
-    default: "yellow",
-  },
-  color: {
-    type: String,
-    default: "white",
-  },
-  block: {
-    type: Boolean,
-    default: false,
-  },
-  label: {
-    type: String,
-    default: "",
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  loading: {
-    type: Boolean,
-    default: false,
-  },
-});
+<script setup lang="ts">
+import { ButtonTypes } from "@/enums/ui.d";
+
+withDefaults(
+  defineProps<{
+    color?: string;
+    block?: boolean;
+    label?: string;
+    loading?: boolean;
+    disabled?: boolean;
+    type?: ButtonTypes;
+    background?: string;
+  }>(),
+  {
+    block: false,
+    loading: false,
+    disabled: false,
+    color: "white",
+    background: "yellow",
+    type: ButtonTypes.Button,
+  }
+);
 </script>
